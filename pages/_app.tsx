@@ -5,8 +5,6 @@ import { RecoilRoot } from "recoil";
 function MyApp({ Component, pageProps }) {
   //ログイン後のリダイレクト先を指定
   const redirectUri = `${process.env["NEXT_PUBLIC_BASE_URL"]}/login`;
-  console.log(redirectUri);
-  console.log(process.env["NEXT_PUBLIC_AUTH0_DOMAIN"]);
   return (
     <Auth0Provider
       domain={process.env["NEXT_PUBLIC_AUTH0_DOMAIN"]!}
