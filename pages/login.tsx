@@ -15,14 +15,19 @@ const LoginPage: NextPage = () => {
   useEffect(() => {
     const getToken = async () => {
       try {
-        const accessToken = await getAccessTokenSilently({});
+        const accessToken = await getAccessTokenSilently({
+          audience: process.env["NEXT_PUBLIC_AUTH0_AUDIENCE"]!,
+          scope: "read:current_user",
+        });
         setToken(accessToken);
+        console.log(accessToken);
       } catch (e) {
         console.log(e.message);
       }
     };
+
     getToken();
-  }, []);
+  }, [getAccessTokenSilently]);
 
   return (
     <div>
